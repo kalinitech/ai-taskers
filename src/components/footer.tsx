@@ -56,13 +56,13 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
             <button onClick={() => navigate({ name: 'home' })} className="flex items-center gap-2 mb-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-500 p-0.5">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-navy via-brand-navyLight to-brand-teal p-0.5">
                 <div className="w-full h-full rounded-[10px] bg-background flex items-center justify-center">
-                  <span className="text-lg font-black bg-gradient-to-br from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">AI</span>
+                  <span className="text-lg font-black bg-gradient-to-br from-brand-navy to-brand-teal bg-clip-text text-transparent">AI</span>
                 </div>
               </div>
               <div>
-                <div className="font-bold leading-none">AI Taskers</div>
+                <div className="font-bold leading-none text-brand-navy dark:text-white">AI Taskers</div>
                 <div className="text-[10px] text-muted-foreground mt-0.5">Verified Talent Directory</div>
               </div>
             </button>
@@ -70,7 +70,7 @@ export function Footer() {
               The largest verified AI training talent directory. Find verified AI trainers, data annotators, and RLHF specialists worldwide.
             </p>
             <div className="flex items-center gap-2 mt-3 text-xs text-muted-foreground">
-              <ShieldCheck className="h-4 w-4 text-emerald-500" />
+              <ShieldCheck className="h-4 w-4 text-brand-teal" />
               <span>Directory only · No middlemen · No disputes</span>
             </div>
           </div>
