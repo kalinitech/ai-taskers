@@ -5,7 +5,7 @@ import {
   PieChart, Pie, Cell, Legend, LineChart, Line, CartesianGrid, Area, AreaChart,
 } from 'recharts'
 
-const COLORS = ['#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4', '#ef4444', '#84cc16', '#a855f7']
+const COLORS = ['#1E2A5E', '#00C2D1', '#2DD4BF', '#2B3B7A', '#20B2AA', '#5F9EA0', '#4682B4', '#191970']
 
 export function Analytics() {
   const [stats, setStats] = useState<any>(null)
@@ -39,10 +39,10 @@ export function Analytics() {
 
       {/* KPI cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <KPICard label="Total Taskers" value={counts.totalTaskers} sub={`${counts.recentTaskers} new this week`} color="bg-violet-500" />
-        <KPICard label="Active Employers" value={counts.totalEmployers} sub={`${counts.verifiedEmployers} verified`} color="bg-blue-500" />
-        <KPICard label="Monthly Revenue" value={`$${revenue.monthly}`} sub="from subscriptions" color="bg-emerald-500" />
-        <KPICard label="Avg Rating" value={rating.average.toFixed(2)} sub={`${rating.total} reviews`} color="bg-amber-500" />
+        <KPICard label="Total Taskers" value={counts.totalTaskers} sub={`${counts.recentTaskers} new this week`} color="bg-[#1E2A5E]" />
+        <KPICard label="Active Employers" value={counts.totalEmployers} sub={`${counts.verifiedEmployers} verified`} color="bg-[#00C2D1]" />
+        <KPICard label="Monthly Revenue" value={`$${revenue.monthly}`} sub="from subscriptions" color="bg-[#2DD4BF]" />
+        <KPICard label="Avg Rating" value={rating.average.toFixed(2)} sub={`${rating.total} reviews`} color="bg-[#2B3B7A]" />
       </div>
 
       {/* Charts */}
@@ -54,12 +54,12 @@ export function Analytics() {
             <AreaChart data={signupTrend}>
               <defs>
                 <linearGradient id="colorSignups" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#1E2A5E" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#1E2A5E" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="colorPosts" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#ec4899" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#ec4899" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#00C2D1" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#00C2D1" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
@@ -67,8 +67,8 @@ export function Analytics() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Area type="monotone" dataKey="signups" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorSignups)" />
-              <Area type="monotone" dataKey="posts" stroke="#ec4899" fillOpacity={1} fill="url(#colorPosts)" />
+              <Area type="monotone" dataKey="signups" stroke="#1E2A5E" fillOpacity={1} fill="url(#colorSignups)" />
+              <Area type="monotone" dataKey="posts" stroke="#00C2D1" fillOpacity={1} fill="url(#colorPosts)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -107,7 +107,7 @@ export function Analytics() {
                 <XAxis dataKey="country" tick={{ fontSize: 11 }} angle={-30} textAnchor="end" height={60} />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="count" fill="#06b6d4" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="count" fill="#00C2D1" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}
@@ -125,7 +125,7 @@ export function Analytics() {
                 <XAxis type="number" />
                 <YAxis dataKey="platform" type="category" tick={{ fontSize: 11 }} width={120} />
                 <Tooltip />
-                <Bar dataKey="count" fill="#f59e0b" radius={[0, 4, 4, 0]} />
+                <Bar dataKey="count" fill="#2DD4BF" radius={[0, 4, 4, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}
