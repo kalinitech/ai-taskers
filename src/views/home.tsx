@@ -7,7 +7,7 @@ import { TaskerCard } from '@/components/tasker-card'
 import { useEffect, useState } from 'react'
 import {
   ShieldCheck, Sparkles, MessageCircle, Globe, Star, Users, Award,
-  TrendingUp, Zap, Heart, ArrowRight, AlertTriangle, CheckCircle2, Trophy,
+  TrendingUp, Zap, Heart, ArrowRight, CheckCircle2, Trophy,
 } from 'lucide-react'
 import { PLATFORMS, MOTIVATIONAL_QUOTES, WHATSAPP_GROUP_LINK } from '@/lib/constants'
 
@@ -40,14 +40,14 @@ export function HomePage() {
       <section className="relative">
         {/* Animated gradient background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-50 via-white to-fuchsia-50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/5 via-white to-brand-teal/5" />
           <motion.div
-            className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-violet-200/40 blur-3xl"
+            className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-brand-teal/20 blur-3xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.6, 0.4] }}
             transition={{ duration: 8, repeat: Infinity }}
           />
           <motion.div
-            className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-fuchsia-200/40 blur-3xl"
+            className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-brand-navy/20 blur-3xl"
             animate={{ scale: [1.2, 1, 1.2], opacity: [0.6, 0.4, 0.6] }}
             transition={{ duration: 8, repeat: Infinity }}
           />
@@ -60,19 +60,19 @@ export function HomePage() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm border text-sm mb-6"
           >
-            <Sparkles className="h-3.5 w-3.5 text-amber-500" />
-            <span className="font-medium">The Largest Verified AI Training Talent Directory</span>
-            <Badge variant="secondary" className="text-[10px]">{stats.taskers}+ taskers</Badge>
+            <Sparkles className="h-3.5 w-3.5 text-brand-teal" />
+            <span className="font-medium text-brand-navy">The Largest Verified AI Training Talent Directory</span>
+            <Badge className="bg-brand-teal text-brand-navy text-[10px]">{stats.taskers}+ taskers</Badge>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-brand-navy"
           >
             Find Verified{' '}
-            <span className="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-amber-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-navy to-brand-teal bg-clip-text text-transparent">
               AI Trainers
             </span>
             ,<br />
@@ -97,7 +97,7 @@ export function HomePage() {
             <Button
               size="lg"
               onClick={() => navigate({ name: 'taskers' })}
-              className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 h-12 px-8 text-base"
+              className="bg-brand-navy hover:bg-brand-navyLight h-12 px-8 text-base text-white"
             >
               <Users className="h-5 w-5 mr-2" />
               Find Taskers
@@ -106,7 +106,7 @@ export function HomePage() {
               size="lg"
               variant="outline"
               onClick={() => navigate({ name: 'auth' })}
-              className="h-12 px-8 text-base"
+              className="h-12 px-8 text-base border-brand-teal text-brand-navy hover:bg-brand-teal/10"
             >
               Create Profile
               <ArrowRight className="h-5 w-5 ml-2" />
@@ -121,19 +121,19 @@ export function HomePage() {
             className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
           >
             <div className="flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-emerald-500" />
+              <ShieldCheck className="h-4 w-4 text-brand-teal" />
               <span>{stats.verified}+ verified taskers</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Globe className="h-4 w-4 text-blue-500" />
+              <Globe className="h-4 w-4 text-brand-navy" />
               <span>{stats.employers}+ employers</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <MessageCircle className="h-4 w-4 text-emerald-500" />
+              <MessageCircle className="h-4 w-4 text-brand-teal" />
               <span>{stats.posts}+ open positions</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Star className="h-4 w-4 text-amber-500" />
+              <Star className="h-4 w-4 text-brand-navy" />
               <span>4.7+ avg rating</span>
             </div>
           </motion.div>
@@ -141,7 +141,7 @@ export function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-16 bg-gradient-to-b from-background to-brand-teal/5">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -149,7 +149,7 @@ export function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">Why AI Taskers?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-brand-navy">Why AI Taskers?</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We're a professional directory, not a marketplace. No middlemen, no fees, no disputes — just verified talent.
             </p>
@@ -157,10 +157,10 @@ export function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: ShieldCheck, color: 'text-emerald-500', bg: 'bg-emerald-50', title: 'Verified Profiles', desc: 'Every verified tasker undergoes manual admin review based on dashboard screenshots, project samples, and employer feedback.' },
-              { icon: Award, color: 'text-amber-500', bg: 'bg-amber-50', title: 'Proven Experience', desc: 'Portfolio, proof of work, and ratings displayed transparently. See real evidence of completed projects.' },
-              { icon: MessageCircle, color: 'text-emerald-500', bg: 'bg-emerald-50', title: 'Direct Contact', desc: 'No middlemen, no platform fees. Connect directly via WhatsApp with taskers and employers.' },
-              { icon: Globe, color: 'text-blue-500', bg: 'bg-blue-50', title: 'Global Talent', desc: 'Access skilled AI trainers across Kenya, Nigeria, India, Philippines, USA, UK, and more.' },
+              { icon: ShieldCheck, color: 'text-brand-teal', bg: 'bg-brand-teal/10', title: 'Verified Profiles', desc: 'Every verified tasker undergoes manual admin review based on dashboard screenshots, project samples, and employer feedback.' },
+              { icon: Award, color: 'text-brand-navy', bg: 'bg-brand-navy/10', title: 'Proven Experience', desc: 'Portfolio, proof of work, and ratings displayed transparently. See real evidence of completed projects.' },
+              { icon: MessageCircle, color: 'text-brand-teal', bg: 'bg-brand-teal/10', title: 'Direct Contact', desc: 'No middlemen, no platform fees. Connect directly via WhatsApp with taskers and employers.' },
+              { icon: Globe, color: 'text-brand-navy', bg: 'bg-brand-navy/10', title: 'Global Talent', desc: 'Access skilled AI trainers across Kenya, Nigeria, India, Philippines, USA, UK, and more.' },
             ].map((feature, i) => (
               <motion.div
                 key={feature.title}
@@ -169,12 +169,12 @@ export function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
-                className="bg-card rounded-2xl p-6 border shadow-sm hover:shadow-md transition-all"
+                className="bg-card rounded-2xl p-6 border border-brand-teal/20 shadow-sm hover:shadow-md transition-all"
               >
                 <div className={`w-12 h-12 rounded-xl ${feature.bg} flex items-center justify-center mb-4`}>
                   <feature.icon className={`h-6 w-6 ${feature.color}`} />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                <h3 className="font-semibold text-lg mb-2 text-brand-navy">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground">{feature.desc}</p>
               </motion.div>
             ))}
@@ -186,7 +186,7 @@ export function HomePage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">Supporting 14+ AI Training Platforms</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-brand-navy">Supporting 14+ AI Training Platforms</h2>
             <p className="text-muted-foreground">Taskers showcase experience across all major AI training platforms</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
@@ -198,12 +198,12 @@ export function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.03 }}
                 whileHover={{ scale: 1.05, y: -3 }}
-                className="bg-card border rounded-xl p-4 text-center cursor-pointer hover:shadow-md transition-all"
-                style={{ borderTopColor: p.color, borderTopWidth: '3px' }}
+                className="bg-card border border-brand-teal/20 rounded-xl p-4 text-center cursor-pointer hover:shadow-md transition-all"
+                style={{ borderTopColor: '#00C2D1', borderTopWidth: '3px' }}
                 onClick={() => navigate({ name: 'taskers' })}
               >
                 <div className="text-3xl mb-2">{p.icon}</div>
-                <div className="text-xs font-medium truncate">{p.name}</div>
+                <div className="text-xs font-medium truncate text-brand-navy">{p.name}</div>
               </motion.div>
             ))}
           </div>
@@ -211,14 +211,14 @@ export function HomePage() {
       </section>
 
       {/* Featured Taskers */}
-      <section className="py-16 bg-gradient-to-br from-violet-50 via-fuchsia-50 to-amber-50">
+      <section className="py-16 bg-gradient-to-br from-brand-navy/5 via-brand-teal/5 to-brand-navy/5">
         <div className="container mx-auto px-4">
           <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-3">Featured Taskers</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-brand-navy">Featured Taskers</h2>
               <p className="text-muted-foreground">Top-rated verified talent available now</p>
             </div>
-            <Button variant="outline" onClick={() => navigate({ name: 'taskers' })}>
+            <Button variant="outline" onClick={() => navigate({ name: 'taskers' })} className="border-brand-teal text-brand-navy hover:bg-brand-teal/10">
               View all taskers
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
@@ -240,12 +240,12 @@ export function HomePage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <Badge variant="outline" className="mb-3"><Trophy className="h-3 w-3 mr-1 text-amber-500" /> Leaderboard</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">Top Performers This Month</h2>
+            <Badge variant="outline" className="mb-3 border-brand-teal/30"><Trophy className="h-3 w-3 mr-1 text-brand-teal" /> Leaderboard</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-brand-navy">Top Performers This Month</h2>
             <p className="text-muted-foreground">Recognizing taskers with the highest points, ratings, and streaks</p>
           </div>
 
-          <div className="max-w-3xl mx-auto bg-card rounded-2xl border shadow-sm overflow-hidden">
+          <div className="max-w-3xl mx-auto bg-card rounded-2xl border border-brand-teal/20 shadow-sm overflow-hidden">
             {leaderboard.length === 0 ? (
               <div className="p-8 text-center text-muted-foreground">Loading leaderboard...</div>
             ) : (
@@ -256,33 +256,33 @@ export function HomePage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.08 }}
                   onClick={() => navigate({ name: 'tasker-detail', id: t.id })}
-                  className={`flex items-center gap-4 p-4 cursor-pointer hover:bg-accent transition-colors border-b last:border-b-0 ${
-                    i === 0 ? 'bg-amber-50/50' : i === 1 ? 'bg-slate-50/50' : i === 2 ? 'bg-orange-50/30' : ''
+                  className={`flex items-center gap-4 p-4 cursor-pointer hover:bg-brand-teal/10 transition-colors border-b last:border-b-0 ${
+                    i === 0 ? 'bg-brand-teal/10' : i === 1 ? 'bg-brand-teal/5' : i === 2 ? 'bg-brand-navy/5' : ''
                   }`}
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                    i === 0 ? 'bg-amber-400 text-white' : i === 1 ? 'bg-slate-400 text-white' : i === 2 ? 'bg-orange-400 text-white' : 'bg-muted text-muted-foreground'
+                    i === 0 ? 'bg-brand-teal text-brand-navy' : i === 1 ? 'bg-brand-navy text-white' : i === 2 ? 'bg-brand-navyLight text-white' : 'bg-muted text-muted-foreground'
                   }`}>
                     {i + 1}
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-400 to-fuchsia-400 overflow-hidden">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-navy to-brand-teal overflow-hidden">
                     {t.photoUrl && <img src={t.photoUrl} alt={t.fullName} className="w-full h-full object-cover" />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="font-semibold truncate">{t.fullName}</div>
+                    <div className="font-semibold truncate text-brand-navy">{t.fullName}</div>
                     <div className="text-xs text-muted-foreground truncate">{t.country} · {t.ratingsCount} reviews</div>
                   </div>
                   <div className="text-right">
-                    <div className="flex items-center gap-1 text-sm font-bold">
-                      <Zap className="h-3 w-3 text-violet-500" />
+                    <div className="flex items-center gap-1 text-sm font-bold text-brand-teal">
+                      <Zap className="h-3 w-3" />
                       {t.points}
                     </div>
                     <div className="text-xs text-muted-foreground">Lvl {t.level}</div>
                   </div>
                   {t.avgRating > 0 && (
                     <div className="flex items-center gap-1 text-sm">
-                      <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                      <span className="font-semibold">{t.avgRating.toFixed(1)}</span>
+                      <Star className="h-3 w-3 fill-brand-teal text-brand-teal" />
+                      <span className="font-semibold text-brand-navy">{t.avgRating.toFixed(1)}</span>
                     </div>
                   )}
                 </motion.div>
@@ -293,30 +293,30 @@ export function HomePage() {
       </section>
 
       {/* Pricing teaser */}
-      <section className="py-16 bg-gradient-to-br from-violet-50 to-fuchsia-50">
+      <section className="py-16 bg-gradient-to-br from-brand-navy/5 to-brand-teal/5">
         <div className="container mx-auto px-4 text-center">
-          <Badge variant="outline" className="mb-3"><Sparkles className="h-3 w-3 mr-1" /> Pricing</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">Boost Your Visibility</h2>
+          <Badge variant="outline" className="mb-3 border-brand-teal/30"><Sparkles className="h-3 w-3 mr-1 text-brand-teal" /> Pricing</Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-brand-navy">Boost Your Visibility</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
             Free tasker profiles are always free. Upgrade to Featured for top placement or Premium for employer listings access.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
-            <div className="bg-card rounded-xl p-4 border shadow-sm min-w-[180px]">
+            <div className="bg-card rounded-xl p-4 border border-brand-teal/20 shadow-sm min-w-[180px]">
               <div className="text-xs text-muted-foreground mb-1">Featured (from)</div>
-              <div className="text-3xl font-bold">$2<span className="text-base text-muted-foreground">/hr</span></div>
+              <div className="text-3xl font-bold text-brand-navy">$2<span className="text-base text-muted-foreground">/hr</span></div>
               <div className="text-xs text-muted-foreground mt-1">Top of search results</div>
             </div>
-            <div className="bg-card rounded-xl p-4 border-2 border-violet-300 shadow-sm min-w-[180px] relative">
-              <Badge className="absolute -top-2 left-1/2 -translate-x-1/2 bg-violet-600">Most Popular</Badge>
+            <div className="bg-card rounded-xl p-4 border-2 border-brand-teal shadow-sm min-w-[180px] relative">
+              <Badge className="absolute -top-2 left-1/2 -translate-x-1/2 bg-brand-teal text-brand-navy">Most Popular</Badge>
               <div className="text-xs text-muted-foreground mb-1">Premium</div>
-              <div className="text-3xl font-bold">$100<span className="text-base text-muted-foreground">/mo</span></div>
+              <div className="text-3xl font-bold text-brand-navy">$100<span className="text-base text-muted-foreground">/mo</span></div>
               <div className="text-xs text-muted-foreground mt-1">Employer listings access</div>
             </div>
           </div>
           <Button
             size="lg"
             onClick={() => navigate({ name: 'pricing' })}
-            className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700"
+            className="bg-brand-navy hover:bg-brand-navyLight text-white"
           >
             See all pricing options
             <ArrowRight className="h-4 w-4 ml-2" />
@@ -331,11 +331,11 @@ export function HomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600 p-8 md:p-12 text-center text-white"
+            className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navyLight to-brand-teal p-8 md:p-12 text-center text-white"
           >
             <div className="absolute inset-0 opacity-20">
               <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-amber-300 blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-brand-teal/50 blur-3xl" />
             </div>
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-4">
@@ -343,7 +343,7 @@ export function HomePage() {
                 <span className="font-medium">Taskers-Only Community</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Join the AI Taskers WhatsApp Community</h2>
-              <p className="text-emerald-50 max-w-2xl mx-auto mb-6">
+              <p className="text-white/90 max-w-2xl mx-auto mb-6">
                 Protect yourself from scams, get peer support, share verified employer experiences, and stay updated on the best tasking opportunities.
               </p>
               <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm mb-8">
@@ -357,7 +357,7 @@ export function HomePage() {
               <Button
                 size="lg"
                 asChild
-                className="bg-white text-emerald-700 hover:bg-emerald-50"
+                className="bg-white text-brand-navy hover:bg-brand-teal/10"
               >
                 <a href={WHATSAPP_GROUP_LINK} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="h-5 w-5 mr-2" />
@@ -370,7 +370,7 @@ export function HomePage() {
       </section>
 
       {/* Daily Motivation */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-16 bg-brand-teal/5">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -378,8 +378,8 @@ export function HomePage() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <Badge variant="outline" className="mb-3"><Heart className="h-3 w-3 mr-1 text-red-500" /> Daily Motivation</Badge>
-            <blockquote className="text-2xl md:text-3xl font-serif italic mb-3">
+            <Badge variant="outline" className="mb-3 border-brand-teal/30"><Heart className="h-3 w-3 mr-1 text-brand-teal" /> Daily Motivation</Badge>
+            <blockquote className="text-2xl md:text-3xl font-serif italic mb-3 text-brand-navy">
               "{todayQuote.quote}"
             </blockquote>
             <cite className="text-sm text-muted-foreground">— {todayQuote.author}</cite>
@@ -392,10 +392,10 @@ export function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: 'Registered Taskers', value: stats.taskers, icon: Users, color: 'text-violet-500' },
-              { label: 'Verified Taskers', value: stats.verified, icon: ShieldCheck, color: 'text-emerald-500' },
-              { label: 'Active Employers', value: stats.employers, icon: TrendingUp, color: 'text-blue-500' },
-              { label: 'Open Positions', value: stats.posts, icon: Zap, color: 'text-amber-500' },
+              { label: 'Registered Taskers', value: stats.taskers, icon: Users, color: 'text-brand-navy' },
+              { label: 'Verified Taskers', value: stats.verified, icon: ShieldCheck, color: 'text-brand-teal' },
+              { label: 'Active Employers', value: stats.employers, icon: TrendingUp, color: 'text-brand-navy' },
+              { label: 'Open Positions', value: stats.posts, icon: Zap, color: 'text-brand-teal' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -403,10 +403,10 @@ export function HomePage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-card rounded-2xl p-6 text-center border shadow-sm"
+                className="bg-card rounded-2xl p-6 text-center border border-brand-teal/20 shadow-sm"
               >
                 <stat.icon className={`h-8 w-8 mx-auto mb-2 ${stat.color}`} />
-                <div className="text-3xl font-bold">{stat.value}+</div>
+                <div className="text-3xl font-bold text-brand-navy">{stat.value}+</div>
                 <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
               </motion.div>
             ))}
@@ -417,7 +417,7 @@ export function HomePage() {
       {/* Final CTA */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-br from-violet-600 via-fuchsia-600 to-amber-500 rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden">
+          <div className="bg-gradient-to-br from-brand-navy to-brand-teal rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden">
             <div className="absolute inset-0 opacity-30">
               <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-white blur-3xl" />
             </div>
@@ -431,14 +431,14 @@ export function HomePage() {
                   size="lg"
                   variant="secondary"
                   onClick={() => navigate({ name: 'auth' })}
-                  className="h-12 px-8 text-base"
+                  className="h-12 px-8 text-base bg-brand-teal text-brand-navy hover:bg-brand-tealLight"
                 >
                   Create Free Profile
                 </Button>
                 <Button
                   size="lg"
                   onClick={() => navigate({ name: 'taskers' })}
-                  className="h-12 px-8 text-base bg-white/20 backdrop-blur hover:bg-white/30"
+                  className="h-12 px-8 text-base bg-white/20 backdrop-blur hover:bg-white/30 text-white"
                 >
                   Browse Taskers
                 </Button>

@@ -15,6 +15,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { useToast } from '@/hooks/use-toast'
+import Image from 'next/image'
 
 const NAV_LINKS: { label: string; route: any }[] = [
   { label: 'Home', route: { name: 'home' } },
@@ -65,7 +66,7 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-brand-navy/20 bg-white/80 backdrop-blur-lg supports-[backdrop-filter]:bg-white/60 dark:border-brand-teal/20 dark:bg-brand-navy/95">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo + Nav buttons */}
@@ -76,7 +77,7 @@ export function Navbar() {
                 size="icon"
                 onClick={back}
                 disabled={!canGoBack()}
-                className="h-8 w-8"
+                className="h-8 w-8 text-brand-navy hover:bg-brand-teal/10 dark:text-white dark:hover:bg-brand-teal/20"
                 aria-label="Go back"
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -86,7 +87,7 @@ export function Navbar() {
                 size="icon"
                 onClick={forward}
                 disabled={!canGoForward()}
-                className="h-8 w-8"
+                className="h-8 w-8 text-brand-navy hover:bg-brand-teal/10 dark:text-white dark:hover:bg-brand-teal/20"
                 aria-label="Go forward"
               >
                 <ChevronRight className="h-4 w-4" />
@@ -96,15 +97,15 @@ export function Navbar() {
               onClick={() => navigate({ name: 'home' })}
               className="flex items-center gap-2 group"
             >
-              <div className="relative">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-500 p-0.5 group-hover:scale-105 transition-transform">
-                  <div className="w-full h-full rounded-[10px] bg-background flex items-center justify-center">
-                    <span className="text-lg font-black bg-gradient-to-br from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">AI</span>
-                  </div>
-                </div>
-              </div>
+              <Image
+                src="/brand-logo.svg"
+                alt="AI Taskers Logo"
+                width={36}
+                height={36}
+                className="w-9 h-9 group-hover:scale-105 transition-transform"
+              />
               <div className="hidden sm:block">
-                <div className="text-base font-bold leading-none tracking-tight">AI Taskers</div>
+                <div className="text-base font-bold leading-none tracking-tight text-brand-navy dark:text-white">AI Taskers</div>
                 <div className="text-[10px] text-muted-foreground leading-none mt-0.5">Verified Talent Directory</div>
               </div>
             </button>
@@ -116,8 +117,8 @@ export function Navbar() {
               <button
                 key={link.label}
                 onClick={() => navigate(link.route)}
-                className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground ${
-                  route.name === link.route.name ? 'bg-accent text-accent-foreground' : 'text-muted-foreground'
+                className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors hover:bg-brand-teal/10 hover:text-brand-teal ${
+                  route.name === link.route.name ? 'bg-brand-teal/10 text-brand-teal' : 'text-brand-navy/80 dark:text-white/80'
                 }`}
               >
                 {link.label}
@@ -136,7 +137,7 @@ export function Navbar() {
                     toggleBell()
                     if (!isBellOpen && unreadCount > 0) markAllRead()
                   }}
-                  className="relative h-9 w-9"
+                  className="relative h-9 w-9 text-brand-navy hover:bg-brand-teal/10 dark:text-white dark:hover:bg-brand-teal/20"
                   aria-label="Notifications"
                 >
                   <Bell className="h-4 w-4" />
@@ -144,7 +145,7 @@ export function Navbar() {
                     <motion.span
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="absolute -top-0.5 -right-0.5 h-4 min-w-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center"
+                      className="absolute -top-0.5 -right-0.5 h-4 min-w-4 px-1 rounded-full bg-brand-teal text-brand-navy text-[10px] font-bold flex items-center justify-center"
                     >
                       {unreadCount > 9 ? '9+' : unreadCount}
                     </motion.span>
@@ -154,21 +155,21 @@ export function Navbar() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto rounded-xl border bg-popover shadow-lg z-50"
+                    className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto rounded-xl border border-brand-teal/20 bg-white dark:bg-brand-navy shadow-lg z-50"
                   >
-                    <div className="p-3 border-b font-semibold text-sm flex items-center justify-between">
-                      <span>Notifications</span>
-                      <Badge variant="secondary" className="text-xs">{notifications.length}</Badge>
+                    <div className="p-3 border-b border-brand-teal/20 font-semibold text-sm flex items-center justify-between">
+                      <span className="text-brand-navy dark:text-white">Notifications</span>
+                      <Badge className="bg-brand-teal text-brand-navy text-xs">{notifications.length}</Badge>
                     </div>
-                    <div className="divide-y max-h-80 overflow-y-auto">
+                    <div className="divide-y divide-brand-teal/10 max-h-80 overflow-y-auto">
                       {notifications.length === 0 ? (
                         <div className="p-6 text-center text-sm text-muted-foreground">No notifications</div>
                       ) : (
                         notifications.slice(0, 10).map((n) => (
-                          <div key={n.id} className={`p-3 text-sm ${!n.isRead ? 'bg-accent/30' : ''}`}>
+                          <div key={n.id} className={`p-3 text-sm ${!n.isRead ? 'bg-brand-teal/10' : ''}`}>
                             <div className="flex items-center gap-2 mb-1">
-                              <Badge variant="outline" className="text-[10px] px-1.5 py-0">{n.type}</Badge>
-                              <span className="font-medium">{n.title}</span>
+                              <Badge className="bg-brand-navy text-white text-[10px] px-1.5 py-0">{n.type}</Badge>
+                              <span className="font-medium text-brand-navy dark:text-white">{n.title}</span>
                             </div>
                             <p className="text-xs text-muted-foreground line-clamp-2">{n.message}</p>
                           </div>
@@ -184,34 +185,34 @@ export function Navbar() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-9 w-9 rounded-full">
-                    <Avatar className="h-9 w-9">
+                    <Avatar className="h-9 w-9 border border-brand-teal/20">
                       <AvatarImage src={`https://api.dicebear.com/9.x/avataaars/svg?seed=${encodeURIComponent(name || '')}`} />
-                      <AvatarFallback>{name?.[0]?.toUpperCase()}</AvatarFallback>
+                      <AvatarFallback className="bg-brand-teal text-brand-navy">{name?.[0]?.toUpperCase()}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuContent align="end" className="w-56 border-brand-teal/20">
                   <DropdownMenuLabel>
                     <div className="flex flex-col">
-                      <span className="text-sm font-medium">{name}</span>
+                      <span className="text-sm font-medium text-brand-navy dark:text-white">{name}</span>
                       <span className="text-xs text-muted-foreground">{email}</span>
-                      <Badge variant="secondary" className="mt-1 w-fit text-[10px] capitalize">{role}</Badge>
+                      <Badge className="mt-1 w-fit text-[10px] capitalize bg-brand-teal text-brand-navy">{role}</Badge>
                     </div>
                   </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => navigate({ name: 'dashboard' })}>
+                  <DropdownMenuSeparator className="border-brand-teal/20" />
+                  <DropdownMenuItem onClick={() => navigate({ name: 'dashboard' })} className="text-brand-navy hover:bg-brand-teal/10 dark:text-white">
                     Dashboard
                   </DropdownMenuItem>
                   {role === 'admin' && (
-                    <DropdownMenuItem onClick={() => navigate({ name: 'admin' })}>
+                    <DropdownMenuItem onClick={() => navigate({ name: 'admin' })} className="text-brand-navy hover:bg-brand-teal/10 dark:text-white">
                       Admin Panel
                     </DropdownMenuItem>
                   )}
-                  <DropdownMenuItem onClick={() => navigate({ name: 'pricing' })}>
+                  <DropdownMenuItem onClick={() => navigate({ name: 'pricing' })} className="text-brand-navy hover:bg-brand-teal/10 dark:text-white">
                     Upgrade Plan
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout} className="text-red-600">
+                  <DropdownMenuSeparator className="border-brand-teal/20" />
+                  <DropdownMenuItem onClick={handleLogout} className="text-red-600 hover:bg-red-50">
                     Sign out
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -222,14 +223,14 @@ export function Navbar() {
                   variant="ghost"
                   size="sm"
                   onClick={() => navigate({ name: 'auth' })}
-                  className="hidden sm:inline-flex"
+                  className="hidden sm:inline-flex text-brand-navy hover:bg-brand-teal/10 dark:text-white dark:hover:bg-brand-teal/20"
                 >
                   Sign in
                 </Button>
                 <Button
                   size="sm"
                   onClick={() => navigate({ name: 'auth' })}
-                  className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700"
+                  className="bg-brand-navy hover:bg-brand-navyLight text-white"
                 >
                   Get Started
                 </Button>
@@ -240,7 +241,7 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="lg:hidden text-brand-navy hover:bg-brand-teal/10 dark:text-white dark:hover:bg-brand-teal/20"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -254,7 +255,7 @@ export function Navbar() {
           <motion.nav
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
-            className="lg:hidden border-t py-4 flex flex-col gap-1"
+            className="lg:hidden border-t border-brand-teal/20 py-4 flex flex-col gap-1"
           >
             {NAV_LINKS.map(link => (
               <button
@@ -263,8 +264,8 @@ export function Navbar() {
                   navigate(link.route)
                   setMobileOpen(false)
                 }}
-                className={`px-3 py-2 text-sm font-medium rounded-lg text-left transition-colors hover:bg-accent ${
-                  route.name === link.route.name ? 'bg-accent text-accent-foreground' : 'text-muted-foreground'
+                className={`px-3 py-2 text-sm font-medium rounded-lg text-left transition-colors hover:bg-brand-teal/10 ${
+                  route.name === link.route.name ? 'bg-brand-teal/10 text-brand-teal' : 'text-brand-navy/80 dark:text-white/80'
                 }`}
               >
                 {link.label}
@@ -276,7 +277,7 @@ export function Navbar() {
                   navigate({ name: 'auth' })
                   setMobileOpen(false)
                 }}
-                className="px-3 py-2 text-sm font-medium rounded-lg text-left text-muted-foreground hover:bg-accent"
+                className="px-3 py-2 text-sm font-medium rounded-lg text-left text-brand-navy/80 hover:bg-brand-teal/10 dark:text-white/80"
               >
                 Sign in
               </button>

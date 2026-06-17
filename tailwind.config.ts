@@ -21,13 +21,19 @@ const config: Config = {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
   			},
+  			brand: {
+  				navy: '#1E2A5E',
+  				teal: '#00C2D1',
+  				tealLight: '#2DD4BF',
+  				navyLight: '#2B3B7A'
+  			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: '#1E2A5E',
+  				foreground: '#ffffff',
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: '#00C2D1',
+  				foreground: '#1E2A5E',
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
