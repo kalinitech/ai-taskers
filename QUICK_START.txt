@@ -1,0 +1,27 @@
+╔══════════════════════════════════════════════════════════════╗
+║         AI TASKERS PLATFORM - QUICK START GUIDE             ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  1. EASIEST: Run the start script                            ║
+║     $ ./start-dev.sh                                         ║
+║                                                              ║
+║  2. MANUAL:                                                  ║
+║     $ bun install     (or npm install)                       ║
+║     $ cp .env.example .env                                   ║
+║     $ bun run db:push                                        ║
+║     $ bun run scripts/seed.ts                                ║
+║     $ bun run dev                                            ║
+║                                                              ║
+║  3. OPEN: http://localhost:3000                              ║
+║                                                              ║
+║  4. DEMO LOGINS:                                             ║
+║     Admin:    admin@aitaskers.com / admin123                 ║
+║     Tasker:   alice.mwangi.0@example.com / tasker123         ║
+║     Employer: techflow.ai@example.com / employer123          ║
+║                                                              ║
+║  5. DOCUMENTATION:                                           ║
+║     - README.md           (everything)                       ║
+║     - DEPLOYMENT.md       (production deploy guide)          ║
+║     - SYSTEM_WALKTHROUGH.md (feature walkthrough)            ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝

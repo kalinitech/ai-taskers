@@ -1,0 +1,206 @@
+// AI Taskers Platform - Prisma Schema
+// SQLite database for the talent directory
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String   @default("tasker") // "tasker" | "employer" | "admin"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  taskerProfile  TaskerProfile?
+  employerProfile EmployerProfile?
+  notifications  Notification[]     @relation("UserNotifications")
+}
+
+model TaskerProfile {
+  id                          String   @id @default(cuid())
+  userId                      String   @unique
+  user                        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  fullName                    String
+  bio                         String   @default("")
+  photoUrl                    String   @default("")
+  country                     String   @default("")
+  city                        String   @default("")
+  languages                   String   @default("") // comma-separated
+  skills                      String   @default("") // comma-separated
+  whatsappNumber              String   @default("")
+  canWorkAtStation            Boolean  @default(false)
+  percentageShare             Int      @default(40)
+  availability                String   @default("available") // "available" | "busy" | "unavailable"
+
+  isVerified                  Boolean  @default(false)
+  verificationBadgeAwardedAt  DateTime?
+  isFeatured                  Boolean  @default(false)
+  isPremium                   Boolean  @default(false)
+  featuredExpiresAt           DateTime?
+  premiumExpiresAt            DateTime?
+
+  status                      String   @default("active") // "active" | "suspended"
+  profileCompletion           Int      @default(0) // 0-100
+  streak                      Int      @default(0)
+  points                      Int      @default(0) // gamification
+  level                       Int      @default(1)
+
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+
+  platforms                   TaskerPlatform[]
+  proofs                      TaskerProof[]
+  ratings                     TaskerRating[]
+  achievements                Achievement[]
+  subscriptions               Subscription[]
+}
+
+model TaskerPlatform {
+  id           String   @id @default(cuid())
+  taskerId     String
+  tasker       TaskerProfile @relation(fields: [taskerId], references: [id], onDelete: Cascade)
+  platformName String
+  projectName  String   @default("")
+  status       String   @default("interested") // "interested" | "working_on" | "completed"
+  createdAt    DateTime @default(now())
+}
+
+model TaskerProof {
+  id          String   @id @default(cuid())
+  taskerId    String
+  tasker      TaskerProfile @relation(fields: [taskerId], references: [id], onDelete: Cascade)
+  proofType   String   @default("screenshot") // "screenshot" | "link" | "file"
+  title       String
+  description String   @default("")
+  fileUrl     String   @default("")
+  createdAt   DateTime @default(now())
+}
+
+model TaskerRating {
+  id           String   @id @default(cuid())
+  taskerId     String
+  tasker       TaskerProfile @relation(fields: [taskerId], references: [id], onDelete: Cascade)
+  employerName String
+  rating       Int      // 1-5
+  comment      String   @default("")
+  createdAt    DateTime @default(now())
+}
+
+model EmployerProfile {
+  id                          String   @id @default(cuid())
+  userId                      String   @unique
+  user                        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  companyName                 String
+  contactName                 String   @default("")
+  whatsappNumber              String   @default("")
+  country                     String   @default("")
+  description                 String   @default("")
+
+  isVerified                  Boolean  @default(false)
+  verificationBadgeAwardedAt  DateTime?
+
+  status                      String   @default("active")
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+
+  posts                       EmployerPost[]
+}
+
+model EmployerPost {
+  id                    String   @id @default(cuid())
+  employerId            String
+  employer              EmployerProfile @relation(fields: [employerId], references: [id], onDelete: Cascade)
+
+  title                 String
+  description           String   @default("")
+  platformName          String   @default("")
+  projectName           String   @default("")
+  numberOfTaskersNeeded Int      @default(1)
+  taskerPercentage      Int      @default(40)
+  employerPercentage    Int      @default(60)
+  workLocation          String   @default("remote") // "remote" | "workstation" | "physical"
+  accountType           String   @default("ready_to_task") // "ready_to_task" | "assessment_needed"
+  contactWhatsapp       String
+  screenshotUrl         String   @default("")
+  isActive              Boolean  @default(true)
+  createdAt             DateTime @default(now())
+  expiresAt             DateTime?
+}
+
+model PlatformCategory {
+  id           String   @id @default(cuid())
+  name         String   @unique
+  icon         String   @default("")
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  projects     ProjectCategory[]
+}
+
+model ProjectCategory {
+  id           String   @id @default(cuid())
+  platformId   String
+  platform     PlatformCategory @relation(fields: [platformId], references: [id], onDelete: Cascade)
+  name         String
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model Plan {
+  id          String   @id @default(cuid())
+  name        String   // "featured" | "premium"
+  duration    String   // "hour" | "day" | "week" | "month"
+  price       Float
+  currency    String   @default("USD")
+  features    String   @default("") // newline-separated
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id          String   @id @default(cuid())
+  taskerId    String
+  tasker      TaskerProfile @relation(fields: [taskerId], references: [id], onDelete: Cascade)
+  planId      String
+  plan        Plan     @relation(fields: [planId], references: [id])
+  startDate   DateTime @default(now())
+  endDate     DateTime
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model Notification {
+  id             String   @id @default(cuid())
+  type           String   @default("system") // "system" | "admin" | "marketing" | "motivational"
+  title          String
+  message        String
+  isCustom       Boolean  @default(false)
+  isSentToAll    Boolean  @default(true)
+  targetUserId   String?
+  targetUser     User?    @relation("UserNotifications", fields: [targetUserId], references: [id], onDelete: Cascade)
+  isRead         Boolean  @default(false)
+  createdAt      DateTime @default(now())
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  taskerId    String
+  tasker      TaskerProfile @relation(fields: [taskerId], references: [id], onDelete: Cascade)
+  badgeType   String   // "profile_complete" | "verified" | "top_rated" | "streak_7" | "streak_30" | "early_adopter" | "featured_pro" | "premium_member"
+  title       String
+  description String
+  icon        String
+  awardedAt   DateTime @default(now())
+}

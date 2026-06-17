@@ -1,0 +1,63 @@
+{
+  "name": "AI Taskers - Verified AI Training Talent Directory",
+  "short_name": "AI Taskers",
+  "description": "Find verified AI trainers, data annotators, and RLHF specialists worldwide. The largest verified AI training talent directory.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#8b5cf6",
+  "categories": ["business", "productivity", "social"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Find Taskers",
+      "short_name": "Taskers",
+      "description": "Browse verified AI taskers",
+      "url": "/?view=taskers",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Employer Posts",
+      "short_name": "Jobs",
+      "description": "View open AI training positions",
+      "url": "/?view=employer-posts",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Pricing",
+      "short_name": "Plans",
+      "description": "Featured and Premium plans",
+      "url": "/?view=pricing",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
