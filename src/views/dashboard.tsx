@@ -170,17 +170,17 @@ export function DashboardPage() {
         <>
           {/* Gamification stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <StatCard icon={Trophy} label="Level" value={profile.level} color="text-amber-500" />
-            <StatCard icon={Zap} label="Points" value={profile.points} color="text-violet-500" />
-            <StatCard icon={Flame} label="Day Streak" value={profile.streak} color="text-orange-500" />
-            <StatCard icon={Star} label="Avg Rating" value={profile.ratings?.length ? (profile.ratings.reduce((s: number, r: any) => s + r.rating, 0) / profile.ratings.length).toFixed(1) : '—'} color="text-amber-500" />
+            <StatCard icon={Trophy} label="Level" value={profile.level} color="text-brand-teal" />
+            <StatCard icon={Zap} label="Points" value={profile.points} color="text-brand-navy" />
+            <StatCard icon={Flame} label="Day Streak" value={profile.streak} color="text-brand-teal" />
+            <StatCard icon={Star} label="Avg Rating" value={profile.ratings?.length ? (profile.ratings.reduce((s: number, r: any) => s + r.rating, 0) / profile.ratings.length).toFixed(1) : '—'} color="text-brand-navy" />
           </div>
 
           {/* Profile completion */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-500 rounded-2xl p-6 text-white mb-6"
+            className="bg-gradient-to-br from-brand-navy via-brand-navyLight to-brand-teal rounded-2xl p-6 text-white mb-6"
           >
             <div className="flex items-center justify-between mb-3">
               <div>
@@ -292,13 +292,13 @@ export function DashboardPage() {
           {/* Subscription status */}
           <div className="bg-card border rounded-2xl p-6 mb-6">
             <h3 className="font-bold mb-3 flex items-center gap-2">
-              <Crown className="h-4 w-4 text-violet-500" />
+              <Crown className="h-4 w-4 text-brand-navy" />
               Subscription Status
             </h3>
             <div className="flex flex-wrap items-center gap-3">
-              {profile.isPremium && <Badge className="bg-violet-500"><Crown className="h-3 w-3 mr-1" /> Premium</Badge>}
-              {profile.isFeatured && <Badge className="bg-amber-500"><Sparkles className="h-3 w-3 mr-1" /> Featured</Badge>}
-              {profile.isVerified && <Badge className="bg-emerald-500"><Star className="h-3 w-3 mr-1" /> Verified</Badge>}
+              {profile.isPremium && <Badge className="bg-brand-navy"><Crown className="h-3 w-3 mr-1" /> Premium</Badge>}
+              {profile.isFeatured && <Badge className="bg-brand-teal text-brand-navy"><Sparkles className="h-3 w-3 mr-1" /> Featured</Badge>}
+              {profile.isVerified && <Badge className="bg-brand-tealLight text-brand-navy"><Star className="h-3 w-3 mr-1" /> Verified</Badge>}
               {!profile.isPremium && !profile.isFeatured && (
                 <p className="text-sm text-muted-foreground">Free tier · Upgrade for more visibility</p>
               )}

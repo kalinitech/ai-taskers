@@ -11,9 +11,9 @@ import { useToast } from '@/hooks/use-toast'
 import { Mail, Lock, User, Briefcase, Check, AlertTriangle } from 'lucide-react'
 
 const DEMO_ACCOUNTS = [
-  { label: 'Admin', email: 'admin@aitaskers.com', password: 'admin123', color: 'bg-violet-500' },
-  { label: 'Tasker', email: 'alice.mwangi.0@example.com', password: 'tasker123', color: 'bg-emerald-500' },
-  { label: 'Employer', email: 'techflow.ai@example.com', password: 'employer123', color: 'bg-amber-500' },
+  { label: 'Admin', email: 'admin@aitaskers.com', password: 'admin123', color: 'bg-brand-navy' },
+  { label: 'Tasker', email: 'alice.mwangi.0@example.com', password: 'tasker123', color: 'bg-brand-teal' },
+  { label: 'Employer', email: 'techflow.ai@example.com', password: 'employer123', color: 'bg-brand-tealLight' },
 ]
 
 export function AuthPage() {
@@ -103,9 +103,9 @@ export function AuthPage() {
         className="bg-card border rounded-3xl p-8 shadow-lg"
       >
         <div className="text-center mb-6">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-500 p-0.5 mx-auto mb-3">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-navy via-brand-navyLight to-brand-teal p-0.5 mx-auto mb-3">
             <div className="w-full h-full rounded-[14px] bg-background flex items-center justify-center">
-              <span className="text-2xl font-black bg-gradient-to-br from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">AI</span>
+              <span className="text-2xl font-black bg-gradient-to-br from-brand-navy to-brand-teal bg-clip-text text-transparent">AI</span>
             </div>
           </div>
           <h1 className="text-2xl font-bold">
@@ -139,7 +139,7 @@ export function AuthPage() {
                   value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
               </div>
             </div>
-            <Button className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700"
+            <Button className="w-full bg-gradient-to-r from-brand-navy to-brand-teal hover:from-brand-navyLight hover:to-brand-tealLight"
               onClick={handleLogin} disabled={loading}>
               {loading ? 'Signing in...' : 'Sign In'}
             </Button>
@@ -153,7 +153,7 @@ export function AuthPage() {
                   type="button"
                   onClick={() => setSignupRole('tasker')}
                   className={`flex items-center gap-2 p-3 rounded-lg border-2 transition-all ${
-                    signupRole === 'tasker' ? 'border-violet-500 bg-violet-50' : 'border-border'
+                    signupRole === 'tasker' ? 'border-brand-teal bg-brand-teal/10' : 'border-border'
                   }`}
                 >
                   <User className="h-4 w-4" />
@@ -163,7 +163,7 @@ export function AuthPage() {
                   type="button"
                   onClick={() => setSignupRole('employer')}
                   className={`flex items-center gap-2 p-3 rounded-lg border-2 transition-all ${
-                    signupRole === 'employer' ? 'border-violet-500 bg-violet-50' : 'border-border'
+                    signupRole === 'employer' ? 'border-brand-teal bg-brand-teal/10' : 'border-border'
                   }`}
                 >
                   <Briefcase className="h-4 w-4" />
@@ -196,12 +196,12 @@ export function AuthPage() {
               <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} className="mt-0.5" />
               <span className="text-muted-foreground">
                 I have read and agree to the{' '}
-                <button onClick={() => navigate({ name: 'terms' })} className="text-violet-600 hover:underline">Terms of Use</button>
+                <button onClick={() => navigate({ name: 'terms' })} className="text-brand-teal hover:underline">Terms of Use</button>
                 {' '}and{' '}
-                <button onClick={() => navigate({ name: 'privacy' })} className="text-violet-600 hover:underline">Privacy Policy</button>.
+                <button onClick={() => navigate({ name: 'privacy' })} className="text-brand-teal hover:underline">Privacy Policy</button>.
               </span>
             </label>
-            <Button className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700"
+            <Button className="w-full bg-gradient-to-r from-brand-navy to-brand-teal hover:from-brand-navyLight hover:to-brand-tealLight"
               onClick={handleSignup} disabled={loading}>
               {loading ? 'Creating account...' : `Create ${signupRole === 'tasker' ? 'Tasker' : 'Employer'} Account`}
             </Button>

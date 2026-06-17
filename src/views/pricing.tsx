@@ -91,7 +91,7 @@ export function PricingPage() {
         animate={{ opacity: 1, y: 0 }}
         className="max-w-md mx-auto bg-card border rounded-2xl p-6 mb-12 text-center"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-teal/10 text-brand-teal text-xs font-semibold mb-3">
           <ShieldCheck className="h-3 w-3" /> Always Free
         </div>
         <h3 className="text-2xl font-bold mb-1">Basic Tasker Profile</h3>
@@ -125,7 +125,7 @@ export function PricingPage() {
       {/* Featured Plans */}
       <div className="mb-12">
         <div className="text-center mb-6">
-          <Badge className="bg-amber-500 hover:bg-amber-500 mb-2"><Sparkles className="h-3 w-3 mr-1" /> Featured Plans</Badge>
+          <Badge className="bg-brand-teal text-brand-navy hover:bg-brand-tealLight mb-2"><Sparkles className="h-3 w-3 mr-1" /> Featured Plans</Badge>
           <h2 className="text-2xl font-bold">Top of Search Results</h2>
           <p className="text-sm text-muted-foreground mt-1">Get featured placement across the platform</p>
         </div>
@@ -137,21 +137,21 @@ export function PricingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.08 }}
               whileHover={{ y: -6 }}
-              className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border-2 border-amber-200 dark:border-amber-800 rounded-2xl p-5 flex flex-col"
+              className="bg-gradient-to-br from-brand-teal/10 to-brand-navy/10 dark:from-brand-navy/30 dark:to-brand-teal/30 border-2 border-brand-teal/50 dark:border-brand-teal/50 rounded-2xl p-5 flex flex-col"
             >
               <div className="text-3xl mb-2">{plan.duration === 'hour' ? '⏱️' : plan.duration === 'day' ? '📅' : plan.duration === 'week' ? '🗓️' : '📆'}</div>
               <div className="text-xs uppercase text-muted-foreground font-semibold mb-1">{plan.duration}</div>
-              <div className="text-3xl font-bold mb-1">${plan.price}<span className="text-sm font-normal text-muted-foreground">/{plan.duration}</span></div>
+              <div className="text-3xl font-bold mb-1 text-brand-navy">${plan.price}<span className="text-sm font-normal text-muted-foreground">/{plan.duration}</span></div>
               <ul className="text-xs space-y-1.5 mt-3 mb-4 flex-1">
                 {plan.features.split('\n').map((f: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-1.5">
-                    <Check className="h-3 w-3 text-amber-600 mt-0.5 flex-shrink-0" />
+                    <Check className="h-3 w-3 text-brand-teal mt-0.5 flex-shrink-0" />
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
               <Button
-                className="w-full bg-amber-500 hover:bg-amber-600 text-white"
+                className="w-full bg-brand-teal text-brand-navy hover:bg-brand-tealLight"
                 onClick={() => handleSubscribe(plan.id, `Featured (${plan.duration})`, plan.price)}
                 disabled={subscribingTo === plan.id}
               >
@@ -165,18 +165,18 @@ export function PricingPage() {
       {/* Premium Plan */}
       <div className="mb-12">
         <div className="text-center mb-6">
-          <Badge className="bg-violet-600 hover:bg-violet-600 mb-2"><Crown className="h-3 w-3 mr-1" /> Premium Plan</Badge>
+          <Badge className="bg-brand-navy hover:bg-brand-navyLight mb-2"><Crown className="h-3 w-3 mr-1" /> Premium Plan</Badge>
           <h2 className="text-2xl font-bold">Full Employer Listings Access</h2>
           <p className="text-sm text-muted-foreground mt-1">Unlock everything + direct employer contact</p>
         </div>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-2xl mx-auto bg-gradient-to-br from-violet-600 via-fuchsia-600 to-violet-700 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
+          className="max-w-2xl mx-auto bg-gradient-to-br from-brand-navy via-brand-navyLight to-brand-teal rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
         >
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-amber-300 blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-brand-teal/50 blur-3xl" />
           </div>
           <div className="relative z-10">
             <div className="flex items-center justify-between mb-4">
@@ -210,7 +210,7 @@ export function PricingPage() {
             <Button
               size="lg"
               variant="secondary"
-              className="w-full text-violet-700 hover:bg-white/90"
+              className="w-full text-brand-navy hover:bg-white/90"
               onClick={() => premiumPlans[0] && handleSubscribe(premiumPlans[0].id, 'Premium (month)', 100)}
               disabled={subscribingTo === premiumPlans[0]?.id || !premiumPlans[0]}
             >
@@ -227,8 +227,8 @@ export function PricingPage() {
             <tr className="border-b">
               <th className="text-left p-3 text-sm font-semibold">Feature</th>
               <th className="p-3 text-sm font-semibold">Basic</th>
-              <th className="p-3 text-sm font-semibold bg-amber-50">Featured</th>
-              <th className="p-3 text-sm font-semibold bg-violet-50">Premium</th>
+              <th className="p-3 text-sm font-semibold bg-brand-teal/10">Featured</th>
+              <th className="p-3 text-sm font-semibold bg-brand-navy/10">Premium</th>
             </tr>
           </thead>
           <tbody>
@@ -247,9 +247,9 @@ export function PricingPage() {
             ].map((row, i) => (
               <tr key={i} className="border-b">
                 <td className="p-3 text-sm">{row.feature}</td>
-                <td className="p-3 text-center">{row.basic ? <Check className="h-4 w-4 text-emerald-500 mx-auto" /> : <X className="h-4 w-4 text-muted-foreground/30 mx-auto" />}</td>
-                <td className="p-3 text-center bg-amber-50/50">{row.featured ? <Check className="h-4 w-4 text-emerald-500 mx-auto" /> : <X className="h-4 w-4 text-muted-foreground/30 mx-auto" />}</td>
-                <td className="p-3 text-center bg-violet-50/50">{row.premium ? <Check className="h-4 w-4 text-emerald-500 mx-auto" /> : <X className="h-4 w-4 text-muted-foreground/30 mx-auto" />}</td>
+                <td className="p-3 text-center">{row.basic ? <Check className="h-4 w-4 text-brand-teal mx-auto" /> : <X className="h-4 w-4 text-muted-foreground/30 mx-auto" />}</td>
+                <td className="p-3 text-center bg-brand-teal/5">{row.featured ? <Check className="h-4 w-4 text-brand-teal mx-auto" /> : <X className="h-4 w-4 text-muted-foreground/30 mx-auto" />}</td>
+                <td className="p-3 text-center bg-brand-navy/5">{row.premium ? <Check className="h-4 w-4 text-brand-teal mx-auto" /> : <X className="h-4 w-4 text-muted-foreground/30 mx-auto" />}</td>
               </tr>
             ))}
           </tbody>
